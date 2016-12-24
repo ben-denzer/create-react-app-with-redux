@@ -1,7 +1,7 @@
 {
-  "name": "CRA_redux_react_router",
+  "name": "create-react-app-with-redux",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
