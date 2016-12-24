@@ -15,10 +15,10 @@ const Home = (props) => {
     });
 
     return (
-        <div>
+        <div id="counter_page">
             <h1>Home</h1>
             {counters}
-            <button onClick={props.addCounter}>Add Counter</button>
+            <button className="add-counter" onClick={props.addCounter}>Add Counter</button>
         </div>
     );
 };

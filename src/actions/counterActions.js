@@ -19,7 +19,6 @@ const decrement = (index) => {
 };
 
 const increment = (index) => {
-    console.log(`increment ${index}`)
     return (dispatch, getState) => {
         const {counter} = getState();
         const newCount = counter[index] + 1;

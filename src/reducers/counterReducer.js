@@ -1,7 +1,6 @@
 import initialState from './initialState';
 
 const reducer = (state = initialState.counter, action) => {
-    console.log(action, state);
     switch(action.type) {
         case 'ADD_COUNTER':
             return [...state, 0];
