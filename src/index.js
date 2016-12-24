@@ -1,17 +1,17 @@
 import React from 'react'
-import {render} from 'react-dom'
-import {BrowserRouter} from 'react-router'
-import Nav from './components/shared/Nav';
-import Routes from './components/shared/Routes';
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router'
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import Main from './components/Main';
 
+const store = configureStore();
 const App = () => (
-  <BrowserRouter>
-    <div>
-      <Nav />
-      <hr/>
-      <TopLevelRoutes />
-    </div>
-  </BrowserRouter>
-)
+    <Provider store={store}>
+        <BrowserRouter>
+            <Main />
+        </BrowserRouter>
+    </Provider>
+);
 
-render(<App/>, document.getElementById('root'));
+render(<App />, document.getElementById('root'));
