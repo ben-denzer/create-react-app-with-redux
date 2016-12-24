@@ -1,13 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {increment} from '../actions/counterActions';
+import {addCounter, decrement, increment, removeCounter} from '../actions/counterActions';
+import CounterContainer from './counter/CounterContainer';
 
 const Home = (props) => {
+    const counters = props.counter.map((counterVal, index) => {
+        return <CounterContainer
+            key={index}
+            val={counterVal}
+            increment={() => props.increment(index)}
+            decrement={() => props.decrement(index)}
+            removeCounter={() => props.removeCounter(index)}
+        />
+    });
+
     return (
         <div>
             <h1>Home</h1>
-            <h2>{props.counter}</h2>
-            <button onClick={() => props.increment(0)}> + </button>
+            {counters}
+            <button onClick={props.addCounter}>Add Counter</button>
         </div>
     );
 };
@@ -20,7 +31,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        increment: (index) => dispatch(increment(index))
+        addCounter:             () => dispatch(addCounter()),
+        decrement:              (index) => dispatch(decrement(index)),
+        increment:              (index) => dispatch(increment(index)),
+        removeCounter:          (index) => dispatch(removeCounter(index)),
     }
 };
 

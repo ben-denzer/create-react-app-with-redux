@@ -1,6 +1,25 @@
-import {INCREMENT_COUNTER, DECREMENT_COUNTER} from '../constants/actionTypes';
+import {
+    ADD_COUNTER,
+    DECREMENT_COUNTER,
+    INCREMENT_COUNTER,
+    REMOVE_COUNTER,
+} from '../constants/actionTypes';
+
+const addCounter = () => {
+    return {type: ADD_COUNTER};
+};
+
+const decrement = (index) => {
+    return (dispatch, getState) => {
+        const {counter} = getState();
+        const newCount = counter[index] - 1;
+
+        newCount >= 0 && dispatch({type: DECREMENT_COUNTER, newCount, index});
+    }
+};
 
 const increment = (index) => {
+    console.log(`increment ${index}`)
     return (dispatch, getState) => {
         const {counter} = getState();
         const newCount = counter[index] + 1;
@@ -9,6 +28,13 @@ const increment = (index) => {
     }
 };
 
+const removeCounter = (index) => {
+    return {type: REMOVE_COUNTER, index};
+};
+
 export {
     increment,
+    decrement,
+    addCounter,
+    removeCounter,
 };
